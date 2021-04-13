@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelManagerPrototype.MainPage"
+             xmlns:xtc="http://xamarin.com/schemas/2020/toolkit">
+    <xtc:TabView
+    TabStripPlacement="Bottom"
+    TabIndicatorColor="LightGray">
+        <xtc:TabViewItem
+        Icon="date_range-24px.svg"
+        Text="Overview"
+        TextColor="LightGray"
+        TextColorSelected="Black">
+            <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label    
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Greetings NAME" 
+                    x:Name="nameLabel"
+                    Grid.ColumnSpan="2"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Vilnius, Lithuania" 
+                    x:Name="locationLabel"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"/>
+        </Grid>
+        </xtc:TabViewItem>
+    <xtc:TabViewItem
+        Icon="square.png"
+        Text="Schedule"
+        TextColor="LightGray"
+        TextColorSelected="Black">
+            <ListView x:Name="ScheduleList" RowHeight="1000" HasUnevenRows="True" ItemTapped="SendNavigation">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="FillAndExpand" Padding="16,16,16,16">
+                                <Label Text="{Binding Location.Title}" FontAttributes="Bold" TextColor="#000" LineBreakMode="TailTruncation" />
+                                <Label Text="{Binding Location.Address}" TextColor="#000" LineBreakMode="TailTruncation" />
+                                <Label Text="{Binding Arrival, StringFormat='{0:MMMM d, yyyy HH:mm}'}" TextColor="#000" LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding Departure, StringFormat='{0:MMMM d, yyyy HH:mm}'}" TextColor="#000" LineBreakMode="TailTruncation" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </xtc:TabViewItem>
+</xtc:TabView>
+</ContentPage>
