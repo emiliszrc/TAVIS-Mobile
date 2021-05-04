@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -19,12 +22,55 @@ namespace TravelManagerPrototype
             InitializeComponent();
         }
 
+        public bool ValidateEmail(string email)
+        {
+            try
+            {
+                var adress = new MailAddress(email);
+
+                if (string.IsNullOrEmpty(adress.Address))
+                {
+                    return false;
+                }
+
+                return adress.Address==email;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
         private async void TryLogin(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(UsernameEntry.Text))
+            {
+                await MaterialDialog.Instance.AlertAsync(message: "Enter an email");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(PasswordEntry.Text))
+            {
+                await MaterialDialog.Instance.AlertAsync(message: "Enter a password");
+                return;
+            }
+
+
+            if (!ValidateEmail(UsernameEntry.Text))
+            {
+                await MaterialDialog.Instance.AlertAsync(message: "Enter a valid email");
+                return;
+            }
 
             var apiclient = new ApiClient();
 
             var response = apiclient.GetClient(UsernameEntry.Text);
+
+            if (response == null)
+            {
+                await MaterialDialog.Instance.AlertAsync(message: "Email or password incorrect");
+                return;
+            }
 
             if (!response.DefaultPassword.Equals(string.Empty))
             {
@@ -35,7 +81,7 @@ namespace TravelManagerPrototype
                     return;
                 }
 
-                await MaterialDialog.Instance.AlertAsync(message: "Password is not correct");
+                await MaterialDialog.Instance.AlertAsync(message: "Email or password incorrect");
                 return;
             }
 

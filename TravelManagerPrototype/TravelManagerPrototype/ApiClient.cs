@@ -56,7 +56,12 @@ namespace TravelManagerPrototype
                 return distance;
             }
 
-            throw new Exception("Failed to fetch trips by client id");
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                return null;
+            }
+
+            throw new Exception("Failed to fetch client by client username");
         }
 
         public Client PostNewPassword(PasswordRequest passwordRequest)

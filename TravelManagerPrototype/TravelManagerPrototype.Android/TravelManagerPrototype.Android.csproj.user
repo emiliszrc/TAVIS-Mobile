@@ -3,6 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>Pixel_2_XL_API_30</SelectedDevice>
     <DefaultDevice>Pixel_2_XL_API_30</DefaultDevice>
-    <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.AppCompat.Light.NoActionBar</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

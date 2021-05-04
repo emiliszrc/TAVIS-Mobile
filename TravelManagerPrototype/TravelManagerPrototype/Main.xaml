@@ -13,7 +13,12 @@
         TextColorSelected="Black">
             <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="70" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -39,6 +44,102 @@
                     x:Name="locationLabel"
                     Grid.Column="2"
                     Grid.ColumnSpan="2"/>
+                <BoxView HeightRequest="2" WidthRequest="5000" Color="DarkGray" Margin ="40, 0, 40, 0" Grid.Column="0"  Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Next visit" 
+                    x:Name="upcomingVisitLabel"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Text="Barcelona" 
+                    x:Name="upcomingVisitTitle"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Text="Ulica Barselona 1" 
+                    x:Name="upcomingVisitAddress"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Arriving at Friday 08:00 (4 hours from now)" 
+                    HorizontalTextAlignment="Center"
+                    x:Name="upcomingVisitTimeLeft"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"/>
+                <BoxView HeightRequest="1" WidthRequest="5000" Color="LightGray" Margin ="40, 0, 40, 0" Grid.Column="0"  Grid.Row="3" Grid.ColumnSpan="4" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Next accomodation" 
+                    x:Name="upcomingHotelLabel"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Text="Barcelona" 
+                    x:Name="upcomingHotelTitle"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Text="Ulica Barselona 1" 
+                    x:Name="upcomingHotelAddress"
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Arriving at Friday 08:00 (4 hours from now)" 
+                    HorizontalTextAlignment="Center"
+                    x:Name="upcomingHotelTimeLeft"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"/>
+                <BoxView HeightRequest="1" WidthRequest="5000" Color="LightGray" Margin ="40, 0, 40, 0" Grid.Column="0"  Grid.Row="6" Grid.ColumnSpan="4" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Next stop" 
+                    x:Name="upcomingStopLabel"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Text="After 45 minutes" 
+                    x:Name="upcomingStopTiming"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"/>
+                <BoxView HeightRequest="1" WidthRequest="5000" Color="LightGray" Margin ="40, 0, 40, 0" Grid.Column="0"  Grid.Row="8" Grid.ColumnSpan="4" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="You just visited Sagrada Familia, let us know what you think!"
+                    HorizontalTextAlignment="Center"
+                    x:Name="feedbackLabel"
+                    Grid.Row="9"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"/>
+
             </Grid>
         </xtc:TabViewItem>
         <xtc:TabViewItem

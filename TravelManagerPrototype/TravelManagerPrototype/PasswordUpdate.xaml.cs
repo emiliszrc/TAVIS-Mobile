@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -21,12 +22,25 @@ namespace TravelManagerPrototype
             Client = client;
         }
 
+        public bool ValidatePassword(string password)
+        {
+            var strongRegex = new Regex("^(?=.*[a-z])(?=.*[0-9])(?=.{8,})");
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                return false;
+            }
+
+            return strongRegex.IsMatch(password);
+        }
+
         private async void TryChange(object sender, EventArgs e)
         {
             var apiclient = new ApiClient();
-            if (!OldPassword.Text.Equals(Client.DefaultPassword))
+
+            if (!ValidatePassword(PasswordEntry.Text))
             {
-                await MaterialDialog.Instance.AlertAsync(message: "Old password does not match");
+                await MaterialDialog.Instance.AlertAsync(message: "Password has to contain a letter, number and be at least 8 characters long");
                 return;
             }
 
@@ -40,7 +54,7 @@ namespace TravelManagerPrototype
             {
                 Id = Client.Id,
                 NewPassword = PasswordEntry.Text,
-                OldPassword = OldPassword.Text
+                OldPassword = string.Empty
             };
 
             var client = apiclient.PostNewPassword(request);
